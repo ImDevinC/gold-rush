@@ -51,10 +51,10 @@
     <body>
         <div>
             <div id="gr-yes">
-                <h1>Yes, it's Gold Rush!</h1>
+                <h1>Yes, it's <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rushpyt</a>!</h1>
             </div>
             <div id="gr-no">
-                <h1>No, it's not Gold Rush.</h1>
+                <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.</h1>
                 <h2>The next gold rush starts at <span id="until"></span>.</h2>
             </div>
             <div class="footer">
@@ -85,10 +85,10 @@
                 let lastDate = new Date()
                 let dates = []
                 goldRushHours.every(h => {
-                    let nextDate = new Date(d) // Jan 30 - 20:56
-                    nextDate.setUTCMinutes(0) // Jan 30 - 20:00
-                    nextDate.setUTCSeconds(0) // Jan 30 - 20:00
-                    nextDate.setUTCHours(h) // Jan 30 - 01:00
+                    let nextDate = new Date(d)
+                    nextDate.setUTCMinutes(0)
+                    nextDate.setUTCSeconds(0)
+                    nextDate.setUTCHours(h)
                     if (nextDate < d) { 
                         nextDate.setUTCDate(nextDate.getUTCDate() + 1)
                     }
@@ -98,7 +98,12 @@
                 first = dates.reduce((pre, cur) => {
                     return pre > cur ? cur : pre
                 })
-                grUntil.innerText = new Intl.DateTimeFormat('en-US', { hour: 'numeric' }).format(first)
+                
+                grUntil.innerText = new Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timeZoneName: 'short'
+                }).format(first)
                 document.title = 'IsItGoldRush - NO!'
                 grYes.style.display = 'none'
                 grNo.style.display = 'block'
