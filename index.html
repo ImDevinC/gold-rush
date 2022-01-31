@@ -82,17 +82,24 @@
             }
 
             let nextGoldRush = (d) => {
-                document.title = 'IsItGoldRush - NO!'
-                let nextDate = new Date(d)
-                nextDate.setUTCMinutes(0)
-                nextDate.setUTCSeconds(0)
+                let lastDate = new Date()
+                let dates = []
                 goldRushHours.every(h => {
-                    nextDate.setUTCHours(h)
-                    if (d < nextDate) {
-                        return false
+                    let nextDate = new Date(d) // Jan 30 - 20:56
+                    nextDate.setUTCMinutes(0) // Jan 30 - 20:00
+                    nextDate.setUTCSeconds(0) // Jan 30 - 20:00
+                    nextDate.setUTCHours(h) // Jan 30 - 01:00
+                    if (nextDate < d) { 
+                        nextDate.setUTCDate(nextDate.getUTCDate() + 1)
                     }
+                    dates.push(nextDate)
+                    return true
                 })
-                grUntil.innerText = new Intl.DateTimeFormat('en-US', { hour: 'numeric' }).format(nextDate)
+                first = dates.reduce((pre, cur) => {
+                    return pre > cur ? cur : pre
+                })
+                grUntil.innerText = new Intl.DateTimeFormat('en-US', { hour: 'numeric' }).format(first)
+                document.title = 'IsItGoldRush - NO!'
                 grYes.style.display = 'none'
                 grNo.style.display = 'block'
             }
