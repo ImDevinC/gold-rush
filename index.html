@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+            body {
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+            }
+
+            #gr-yes {
+                color: green;
+                text-align: center;
+                display: none;
+            }
+
+            #gr-no {
+                color: black;
+                text-align: center;
+                display: none;
+            }
+
+            .data {
+                color: grey;
+                font-style: italic;
+            }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div id="gr-yes">
+                <h1>Yes, it's Gold Rush!</h1>
+            </div>
+            <div id="gr-no">
+                <h1>No, it's not Gold Rush.</h1>
+                <h2>The next gold rush starts at <span id="until"></span>.</h2>
+            </div>
+            <p class="data">This page will automatically refresh every minute.</p>
+            <div class="footer">
+                <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
+                &nbsp;||&nbsp;
+                <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
+            </div>
+        </div>
+        <script>
+            let grYes = document.getElementById('gr-yes')
+            let grRemaining = document.getElementById('remaining')
+            let grNo = document.getElementById('gr-no')
+            let grUntil = document.getElementById('until')
+
+            let goldRushHours = [1,17]
+            let isGoldRush = (d) => {
+                return goldRushHours.includes(d.getUTCHours())
+            }
+
+            let currentGoldRush = (d) => {
+                grYes.style.display = 'block'
+                grNo.style.display = 'none'
+            }
+
+            let nextGoldRush = (d) => {
+                let nextDate = new Date(d)
+                nextDate.setUTCMinutes(0)
+                nextDate.setUTCSeconds(0)
+                goldRushHours.every(h => {
+                    nextDate.setUTCHours(h)
+                    if (d < nextDate) {
+                        return false
+                    }
+                })
+                grUntil.innerText = new Intl.DateTimeFormat('en-US', { hour: 'numeric' }).format(nextDate)
+                grYes.style.display = 'none'
+                grNo.style.display = 'block'
+            }
+
+            let check = () => {
+                currentDate = new Date()
+                let gr = isGoldRush(currentDate)
+                if (gr) {
+                    currentGoldRush(currentDate)
+                } else {
+                    nextGoldRush(currentDate)
+                }
+                setTimeout(check, 60000)
+            }
+
+            check()
+        </script>
+    </body>
+</html>
