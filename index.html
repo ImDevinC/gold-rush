@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
+
+        <meta property="og:url" content="https://isitgoldrush.com" />
+        <meta property="og:url" content="website" />
+        <meta property="og:title" content="Is It Gold Rush?" />
+        <meta property="og:description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
+        <!-- <meta property="og:image" content="???" /> -->
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="isitgoldrush.com" />
+
+        <!-- <link rel="manifest" href="manifest.json" />
+        <link href="coin.png" rel="icon shortcut" sizes="3232" />
+        <link href="coin.png" rel="apple-touch-icon" /> -->
+
         <link rel="shortcut icon" href="./coin.png"> 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-            body, a {
+            :root {
                 font-family: 'Montserrat', sans-serif;
                 text-align: center;
-            }
-
-            @media (prefers-color-scheme: light) {
-                body, a {
-                    background-color: #FFF;
-                    color: #000;
-                }
+                --color-tone-1: #FFF;
+                --color-tone-2: #000;
+                --green: #66bb6a;
+                --disclaimer-size: .8em;
             }
 
             @media (prefers-color-scheme: dark) {
-                body, a  {
-                    background-color: #121212;
-                    color: rgba(255,255,255,.8)
+                :root  {
+                    --color-tone-1: #121212;
+                    --color-tone-2: rgba(255,255,255,.8);
                 }
             }
 
+            html {
+                height: 100%;
+            }
+
+            body, a {
+                background-color: var(--color-tone-1);
+                color: var(--color-tone-2);
+                margin: 0;
+                padding: 0;
+            }
+
+            #flex-container {
+                display: flex;
+                flex-direction: row;
+            }
+
             #gr-yes {
-                color: #66bb6a;
-                text-align: center;
+                flex: auto;
                 display: none;
+                color: var(--green);
             }
 
             #gr-no {
-                text-align: center;
+                flex: auto;
                 display: none;
             }
 
@@ -47,13 +77,18 @@
                 padding-bottom: 10px;
             }
 
+            .footer-content {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
             .disclaimer {
-                font-size: .8em;
+                font-size: var(--disclaimer-size);
             }
         </style>
     </head>
     <body>
-        <div>
+        <div id="flex-container">
             <div id="gr-yes">
                 <h1>Yes, it's <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rushpyt</a>!</h1>
             </div>
@@ -62,11 +97,13 @@
                 <h2>The next gold rush starts at <span id="until"></span>.</h2>
             </div>
             <div class="footer">
-                <p class="data">This page will automatically refresh every minute.</p>
-                <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
-                &nbsp;||&nbsp;
-                <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
-                <p class="disclaimer">We are not affiliated with Rare, LTD. or Sea of Thieves in any way</p>
+                <div class="footer-content">
+                    <p class="data">This page will automatically refresh every minute.</p>
+                    <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
+                    &nbsp;||&nbsp;
+                    <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
+                    <p class="disclaimer">We are not affiliated with Rare, LTD. or Sea of Thieves in any way</p>
+                </div>
             </div>
         </div>
         <script>
