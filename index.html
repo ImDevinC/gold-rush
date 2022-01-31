@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="./coin.png"> 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-            body {
+            body, a {
                 font-family: 'Montserrat', sans-serif;
                 text-align: center;
+                background-color: #121212;
+                color: rgba(255,255,255,.8);
+                
             }
 
             #gr-yes {
-                color: green;
+                color: #66bb6a;
                 text-align: center;
                 display: none;
             }
 
             #gr-no {
-                color: black;
                 text-align: center;
                 display: none;
             }
 
             .data {
-                color: grey;
                 font-style: italic;
             }
 
@@ -34,6 +36,15 @@
                 padding-bottom: 10px;
             }
         </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDLCEN56K2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-XDLCEN56K2');
+        </script>
     </head>
     <body>
         <div>
@@ -44,8 +55,8 @@
                 <h1>No, it's not Gold Rush.</h1>
                 <h2>The next gold rush starts at <span id="until"></span>.</h2>
             </div>
-            <p class="data">This page will automatically refresh every minute.</p>
             <div class="footer">
+                <p class="data">This page will automatically refresh every minute.</p>
                 <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
                 &nbsp;||&nbsp;
                 <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
@@ -63,11 +74,13 @@
             }
 
             let currentGoldRush = (d) => {
+                document.title = 'IsItGoldRush - YES!'
                 grYes.style.display = 'block'
                 grNo.style.display = 'none'
             }
 
             let nextGoldRush = (d) => {
+                document.title = 'IsItGoldRush - NO!'
                 let nextDate = new Date(d)
                 nextDate.setUTCMinutes(0)
                 nextDate.setUTCSeconds(0)
