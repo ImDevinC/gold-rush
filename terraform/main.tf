@@ -20,3 +20,8 @@ resource "google_storage_bucket" "main" {
     main_page_suffix = "index.html"
   }
 }
+
+resource "google_compute_backend_bucket" "main" {
+  name        = "gold-rush"
+  bucket_name = google_storage_bucket.main.name
+}
