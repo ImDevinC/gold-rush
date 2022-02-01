@@ -1,7 +1,11 @@
 name: Deploy site files
 
-on:
-  workflow_dispatch:
+on: 
+  push:
+    branches:
+    - main
+    paths:
+    - "src/**"
 
 jobs:
   upload_files:
