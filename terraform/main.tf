@@ -11,7 +11,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "main" {
-  name                        = "gold-rush"
+  name                        = "gnomebytes.com"
   location                    = "US"
   force_destroy               = true
   uniform_bucket_level_access = true
