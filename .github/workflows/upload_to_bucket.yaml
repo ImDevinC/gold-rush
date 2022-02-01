@@ -1,6 +1,7 @@
 name: Deploy site files
 
 on: 
+  workflow_dispatch:
   push:
     branches:
     - main

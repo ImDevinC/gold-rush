@@ -1,6 +1,7 @@
 name: Deploy Terraform
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main
@@ -26,14 +27,7 @@ jobs:
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-    - name: Terraform plan
-      working-directory: terraform
-      run: terraform plan
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
     - name: Terraform apply
-      if: github.ref == 'refs/head/main' && github.event_name == 'push'
       working-directory: terraform
       run: terraform apply -auto-approve
       env:
