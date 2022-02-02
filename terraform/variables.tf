@@ -9,3 +9,9 @@ variable "tls_key" {
   description = "ID of the TLS Keys"
   default     = "gold-rush-tls-key"
 }
+
+variable "letsencrypt_dns_validation" {
+  type        = string
+  description = "Validation string for Lets Encrypt Token"
+  default     = "JPPIUQPIlUDBggDX6TUXV1esRuG6HwIOn970U8nxbbI"
+}
