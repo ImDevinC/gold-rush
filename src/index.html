@@ -104,7 +104,7 @@
             </div>
             <div id="gr-no">
                 <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.</h1>
-                <h2>The next gold rush starts at <span id="until"></span>.</h2>
+                <h2>The next gold rush events start at <span id="until-1"></span> and <span id="until-2"></span>.</h2>
             </div>
             <div class="footer">
                 <div class="footer-content">
@@ -120,7 +120,8 @@
             let grYes = document.getElementById('gr-yes')
             let grRemaining = document.getElementById('remaining')
             let grNo = document.getElementById('gr-no')
-            let grUntil = document.getElementById('until')
+            let grUntil1 = document.getElementById('until-1')
+            let grUntil2 = document.getElementById('until-2')
 
             let goldRushHours = [1,17]
             let isGoldRush = (d) => {
@@ -147,15 +148,27 @@
                     dates.push(nextDate)
                     return true
                 })
+
                 first = dates.reduce((pre, cur) => {
                     return pre > cur ? cur : pre
                 })
+
+                second = dates.reduce((pre, cur) => {
+                    return pre < cur ? cur : pre
+                })
                 
-                grUntil.innerText = new Intl.DateTimeFormat('en-US', {
+                grUntil1.innerText = new Intl.DateTimeFormat('en-US', {
                     hour: 'numeric',
                     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                     timeZoneName: 'short'
                 }).format(first)
+
+                grUntil2.innerText = new Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timeZoneName: 'short'
+                }).format(second)
+
                 document.title = 'IsItGoldRush - NO!'
                 grYes.style.display = 'none'
                 grNo.style.display = 'block'
