@@ -104,7 +104,7 @@
             </div>
             <div id="gr-no">
                 <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.</h1>
-                <h2>The next gold rush events start at <span id="until-1"></span> and <span id="until-2"></span>.</h2>
+                <h2>The next gold rush events start at <span id="until-1" class="time"></span> and <span id="until-2" class="time"></span>.</h2>
             </div>
             <div class="footer">
                 <div class="footer-content">
@@ -134,6 +134,23 @@
                 grNo.style.display = 'none'
             }
 
+            let getShortDate = (d) => {
+                let shortDate = Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timeZoneName: 'short'
+                }).format(d)
+
+                let curDate = new Date()
+                if (curDate.getDate() == d.getDate()) {
+                    shortDate += ' today'
+                } else {
+                    shortDate += ' tomorrow'
+                }
+                
+                return shortDate
+            }
+
             let nextGoldRush = (d) => {
                 let lastDate = new Date()
                 let dates = []
@@ -157,17 +174,8 @@
                     return pre < cur ? cur : pre
                 })
                 
-                grUntil1.innerText = new Intl.DateTimeFormat('en-US', {
-                    hour: 'numeric',
-                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                    timeZoneName: 'short'
-                }).format(first)
-
-                grUntil2.innerText = new Intl.DateTimeFormat('en-US', {
-                    hour: 'numeric',
-                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                    timeZoneName: 'short'
-                }).format(second)
+                grUntil1.innerText = getShortDate(first)
+                grUntil2.innerText = getShortDate(second)
 
                 document.title = 'IsItGoldRush - NO!'
                 grYes.style.display = 'none'
