@@ -29,6 +29,7 @@
                 --color-tone-2: #000;
                 --green: #66bb6a;
                 --disclaimer-size: .8em;
+                --side-padding: 10px;
             }
 
             @media (prefers-color-scheme: dark) {
@@ -45,7 +46,7 @@
             body, a {
                 background-color: var(--color-tone-1);
                 color: var(--color-tone-2);
-                margin: 0;
+                margin: var(--side-padding);
                 padding: 0;
             }
 
@@ -78,8 +79,8 @@
             }
 
             .footer-content {
-                padding-left: 5px;
-                padding-right: 5px;
+                padding-left: var(--side-padding);
+                padding-right: var(--side-padding);
             }
 
             .disclaimer {
@@ -104,7 +105,8 @@
             </div>
             <div id="gr-no">
                 <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.</h1>
-                <h2>The next gold rush events start at <span id="until-1" class="time"></span> and <span id="until-2" class="time"></span>.</h2>
+                <h2>The next gold rush event is at <span id="until-1" class="time"></span>.</h2>
+                <h2>After that, Gold Rush starts at <span id="until-2" class="time"></span>.</h2>
             </div>
             <div class="footer">
                 <div class="footer-content">
