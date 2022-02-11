@@ -1,0 +1,17 @@
+module "bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  bucket = "imdevinc-gold-rush"
+  acl    = "private"
+}
+
+data "aws_iam_policy_document" "s3_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = [module.bucket.s3_bucket_arn]
+
+    principals {
+      type        = "AWS"
+      identifiers = module.cloudfront.cloudfront_origin_access_identity_iam_arns
+    }
+  }
+}
