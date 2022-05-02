@@ -24,7 +24,7 @@ module "records" {
       ttl     = 3600
     },
     {
-      name    = "_acme-challenge.www"
+      name    = "_acme-challenge"
       type    = "TXT"
       records = [local.dns_validation]
       ttl     = 3600
