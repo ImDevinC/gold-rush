@@ -1,5 +1,5 @@
-cerbot:
-	sudo cerbot certonly --manual --preferred-challenges dns -d "isitgoldrush.com,*.isitgoldrush.com"
+certbot:
+	sudo certbot certonly --manual --preferred-challenges dns -d "isitgoldrush.com,*.isitgoldrush.com"
 	
 copy-certs:
 	sudo cat /etc/letsencrypt/live/isitgoldrush.com/cert.pem > /tmp/isitgoldrush-cert.pem
