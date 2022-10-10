@@ -34,7 +34,7 @@ module "cloudfront" {
     }
   }
   viewer_certificate = {
-    acm_certificate_arn = aws_acm_certificate.gnomebytes_com.arn
+    acm_certificate_arn = aws_acm_certificate.main.arn
     ssl_support_method  = "sni-only"
   }
 }
