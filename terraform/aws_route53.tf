@@ -39,12 +39,6 @@ module "records" {
       type    = "CNAME"
       records = [local.domain_name]
       ttl     = 3600
-    },
-    {
-      name    = "_acme-challenge"
-      type    = "TXT"
-      records = [local.dns_validation]
-      ttl     = 3600
     }
   ]
 
