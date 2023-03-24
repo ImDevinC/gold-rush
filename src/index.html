@@ -1,241 +1,242 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
 
-    <meta property="og:url" content="https://isitgoldrush.com" />
-    <meta property="og:url" content="website" />
-    <meta property="og:title" content="Is It Gold Rush?" />
-    <meta property="og:description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
-    <!-- <meta property="og:image" content="???" /> -->
+        <meta property="og:url" content="https://isitgoldrush.com" />
+        <meta property="og:url" content="website" />
+        <meta property="og:title" content="Is It Gold Rush?" />
+        <meta property="og:description" content="Get the Sea of Thieves Gold Rush time in your local timezone" />
+        <!-- <meta property="og:image" content="???" /> -->
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="isitgoldrush.com" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="isitgoldrush.com" />
 
-    <!-- <link rel="manifest" href="manifest.json" />
+        <!-- <link rel="manifest" href="manifest.json" />
         <link href="coin.png" rel="icon shortcut" sizes="3232" />
         <link href="coin.png" rel="apple-touch-icon" /> -->
 
-    <link rel="shortcut icon" href="./coin.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        <link rel="shortcut icon" href="./coin.png">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-        :root {
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            --color-tone-1: #FFF;
-            --color-tone-2: #000;
-            --green: #66bb6a;
-            --disclaimer-size: .8em;
-            --side-padding: 10px;
-        }
-
-        @media (prefers-color-scheme: dark) {
             :root {
-                --color-tone-1: #121212;
-                --color-tone-2: rgba(255, 255, 255, .8);
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+                --color-tone-1: #FFF;
+                --color-tone-2: #000;
+                --green: #66bb6a;
+                --disclaimer-size: .8em;
+                --side-padding: 10px;
             }
-        }
 
-        html {
-            height: 100%;
-        }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --color-tone-1: #121212;
+                    --color-tone-2: rgba(255, 255, 255, .8);
+                }
+            }
 
-        body,
-        a {
-            background-color: var(--color-tone-1);
-            color: var(--color-tone-2);
-        }
+            html {
+                height: 100%;
+            }
 
-        body {
-            margin: var(--side-padding);
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
+            body,
+            a {
+                background-color: var(--color-tone-1);
+                color: var(--color-tone-2);
+            }
 
-        #flex-container {
-            display: flex;
-            flex-direction: row;
-        }
+            body {
+                margin: var(--side-padding);
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+            }
 
-        #gr-yes {
-            flex: auto;
-            display: none;
-            color: var(--green);
-        }
+            #flex-container {
+                display: flex;
+                flex-direction: row;
+            }
 
-        #gr-no {
-            flex: auto;
-            display: none;
-        }
+            #gr-yes {
+                flex: auto;
+                display: none;
+                color: var(--green);
+            }
 
-        #alert {
-            display: none;
-            flex: auto;
-            background-color: #fff3cd;
-            color: #856404;
-            border-color: #ffeeba;
-            margin: auto;
-            padding: 0.75rem 1.25rem;
-            border-radius: .25rem;
-        }
+            #gr-no {
+                flex: auto;
+                display: none;
+            }
 
-        .data {
-            font-style: italic;
-        }
+            #alert {
+                display: none;
+                flex: auto;
+                background-color: #fff3cd;
+                color: #856404;
+                border-color: #ffeeba;
+                margin: auto;
+                padding: 0.75rem 1.25rem;
+                border-radius: .25rem;
+            }
 
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            padding-bottom: 10px;
-        }
+            .data {
+                font-style: italic;
+            }
 
-        .footer-content {
-            padding-left: var(--side-padding);
-            padding-right: var(--side-padding);
-        }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding-bottom: 10px;
+            }
 
-        .disclaimer {
-            font-size: var(--disclaimer-size);
-        }
-    </style>
+            .footer-content {
+                padding-left: var(--side-padding);
+                padding-right: var(--side-padding);
+            }
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDLCEN56K2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+            .disclaimer {
+                font-size: var(--disclaimer-size);
+            }
+        </style>
 
-        gtag('config', 'G-XDLCEN56K2');
-    </script>
-</head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDLCEN56K2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
 
-<body>
-    <div id="alert">
-        Nothing is happening!
-    </div>
-    <div id="flex-container">
-        <div id="gr-yes">
-            <h1>Yes, it's <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>!</h1>
+            gtag('config', 'G-XDLCEN56K2');
+        </script>
+    </head>
+
+    <body>
+        <div id="alert">
+            Nothing is happening!
         </div>
-        <div id="gr-no">
-            <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.
-            </h1>
-            <h2>The next gold rush event is at <span id="until-1" class="time"></span>.</h2>
-            <h2>After that, Gold Rush starts at <span id="until-2" class="time"></span>.</h2>
-        </div>
-        <div class="footer">
-            <div class="footer-content">
-                <p class="data">This page will automatically refresh every minute.</p>
-                <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
-                &nbsp;||&nbsp;
-                <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
-                <p class="disclaimer">We are not affiliated with Rare, LTD. or Sea of Thieves in any way</p>
+        <div id="flex-container">
+            <div id="gr-yes">
+                <h1>Yes, it's <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>!
+                </h1>
+            </div>
+            <div id="gr-no">
+                <h1>No, it's not <a href="https://seaofthieves.fandom.com/wiki/Gold_Rush" target="_blank">Gold Rush</a>.
+                </h1>
+                <h2>The next gold rush event is at <span id="until-1" class="time"></span>.</h2>
+                <h2>After that, Gold Rush starts at <span id="until-2" class="time"></span>.</h2>
+            </div>
+            <div class="footer">
+                <div class="footer-content">
+                    <p class="data">This page will automatically refresh every minute.</p>
+                    <a href="https://github.com/ImDevinC" target="_blank">Created by @ImDevinC</a>
+                    &nbsp;||&nbsp;
+                    <a href="https://twitch.tv/gnomebytes" target="_blank">Twitch @gnomebytes</a>
+                    <p class="disclaimer">We are not affiliated with Rare, LTD. or Sea of Thieves in any way</p>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        const alertMsg = 'Nothing is happening'
-        const alertStart = new Date('2022-10-11T00:00:00Z');
-        const alertEnd = new Date('2022-10-11T21:41:00Z');
+        <script>
+            const alertMsg = 'Due to Community Weekend, Gold Rush is not active'
+            const alertStart = new Date('2023-03-25T10:00:00Z');
+            const alertEnd = new Date('2022-03-27T10:00:00Z');
 
-        let grYes = document.getElementById('gr-yes')
-        let grRemaining = document.getElementById('remaining')
-        let grNo = document.getElementById('gr-no')
-        let grUntil1 = document.getElementById('until-1')
-        let grUntil2 = document.getElementById('until-2')
-        let alertContainer = document.getElementById('alert')
+            let grYes = document.getElementById('gr-yes')
+            let grRemaining = document.getElementById('remaining')
+            let grNo = document.getElementById('gr-no')
+            let grUntil1 = document.getElementById('until-1')
+            let grUntil2 = document.getElementById('until-2')
+            let alertContainer = document.getElementById('alert')
 
-        let goldRushHours = [1, 17]
-        let isGoldRush = (d) => {
-            return goldRushHours.includes(d.getUTCHours())
-        }
-
-        let currentGoldRush = (d) => {
-            document.title = 'IsItGoldRush - YES!'
-            grYes.style.display = 'block'
-            grNo.style.display = 'none'
-        }
-
-        let getShortDate = (d) => {
-            let shortDate = Intl.DateTimeFormat('en-US', {
-                hour: 'numeric',
-                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                timeZoneName: 'short'
-            }).format(d)
-
-            let curDate = new Date()
-            if (curDate.getDate() == d.getDate()) {
-                shortDate += ' today'
-            } else {
-                shortDate += ' tomorrow'
+            let goldRushHours = [1, 17]
+            let isGoldRush = (d) => {
+                return goldRushHours.includes(d.getUTCHours())
             }
 
-            return shortDate
-        }
+            let currentGoldRush = (d) => {
+                document.title = 'IsItGoldRush - YES!'
+                grYes.style.display = 'block'
+                grNo.style.display = 'none'
+            }
 
-        let nextGoldRush = (d) => {
-            let lastDate = new Date()
-            let dates = []
-            goldRushHours.every(h => {
-                let nextDate = new Date(d)
-                nextDate.setUTCMinutes(0)
-                nextDate.setUTCSeconds(0)
-                nextDate.setUTCHours(h)
-                if (nextDate < d) {
-                    nextDate.setUTCDate(nextDate.getUTCDate() + 1)
+            let getShortDate = (d) => {
+                let shortDate = Intl.DateTimeFormat('en-US', {
+                    hour: 'numeric',
+                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timeZoneName: 'short'
+                }).format(d)
+
+                let curDate = new Date()
+                if (curDate.getDate() == d.getDate()) {
+                    shortDate += ' today'
+                } else {
+                    shortDate += ' tomorrow'
                 }
-                dates.push(nextDate)
-                return true
-            })
 
-            first = dates.reduce((pre, cur) => {
-                return pre > cur ? cur : pre
-            })
-
-            second = dates.reduce((pre, cur) => {
-                return pre < cur ? cur : pre
-            })
-
-            grUntil1.innerText = getShortDate(first)
-            grUntil2.innerText = getShortDate(second)
-
-            document.title = 'IsItGoldRush - NO!'
-            grYes.style.display = 'none'
-            grNo.style.display = 'block'
-        }
-
-        let check = () => {
-            currentDate = new Date()
-            let gr = isGoldRush(currentDate)
-            if (gr) {
-                currentGoldRush(currentDate)
-            } else {
-                nextGoldRush(currentDate)
+                return shortDate
             }
-            setTimeout(check, 60000)
-        }
 
-        let alert = () => {
-            const now = new Date();
-            if (now > alertStart && now < alertEnd) {
-                alertContainer.style.display = 'block'
-            } else {
-                alertContainer.style.display = 'none'
+            let nextGoldRush = (d) => {
+                let lastDate = new Date()
+                let dates = []
+                goldRushHours.every(h => {
+                    let nextDate = new Date(d)
+                    nextDate.setUTCMinutes(0)
+                    nextDate.setUTCSeconds(0)
+                    nextDate.setUTCHours(h)
+                    if (nextDate < d) {
+                        nextDate.setUTCDate(nextDate.getUTCDate() + 1)
+                    }
+                    dates.push(nextDate)
+                    return true
+                })
+
+                first = dates.reduce((pre, cur) => {
+                    return pre > cur ? cur : pre
+                })
+
+                second = dates.reduce((pre, cur) => {
+                    return pre < cur ? cur : pre
+                })
+
+                grUntil1.innerText = getShortDate(first)
+                grUntil2.innerText = getShortDate(second)
+
+                document.title = 'IsItGoldRush - NO!'
+                grYes.style.display = 'none'
+                grNo.style.display = 'block'
             }
-        }
 
-        check()
-        alert()
+            let check = () => {
+                currentDate = new Date()
+                let gr = isGoldRush(currentDate)
+                if (gr) {
+                    currentGoldRush(currentDate)
+                } else {
+                    nextGoldRush(currentDate)
+                }
+                setTimeout(check, 60000)
+            }
 
-    </script>
-</body>
+            let alert = () => {
+                const now = new Date();
+                if (now > alertStart && now < alertEnd) {
+                    alertContainer.style.display = 'block'
+                } else {
+                    alertContainer.style.display = 'none'
+                }
+            }
+
+            check()
+            alert()
+
+        </script>
+    </body>
 
 </html>
